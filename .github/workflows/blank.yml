@@ -39,7 +39,7 @@ jobs:
       - name: Referring context or in-built variables
         run: |
           echo "[INFO] Triggered by ${{ github.event_name }}."
-          echo "[INFO] New changes are added by ${{ github.actor }} in ${{ github.ref_name }} branch."
+          echo "[INFO] New changes are added by ${{ github.actor }} in ${{ github.head_ref }} branch."
           echo "[INFO] Current JOB ID is ${{ job.check_run_id }}."
           
   job3-staging:
@@ -52,7 +52,7 @@ jobs:
         run:  echo "[INFO] Password for ${{ vars.USER }} is ${{ secrets.PASSWORD }}."
     environment:
       name: STAGING
-    if: github.event_name == 'push' && github.ref == 'refs/heads/dev'
+    if: github.head_ref == 'dev'
 
   job3-prod:
     name: PROD DEPLOYMENT
