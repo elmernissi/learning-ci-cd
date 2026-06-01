@@ -52,9 +52,10 @@ jobs:
         run:  echo "[INFO] Password for ${{ vars.USER }} is ${{ secrets.PASSWORD }}."
     environment:
       name: STAGING
+    if: github.ref == 'refs/heads/dev'
 
   job3-prod:
-    name: STAGE DEPLOYMENT
+    name: PROD DEPLOYMENT
     runs-on: ubuntu-latest
     steps:
       - name: Referring Environment Variables
@@ -63,4 +64,4 @@ jobs:
         run:  echo "[INFO] Password for ${{ vars.USER }} is ${{ secrets.PASSWORD }}."
     environment:
       name: PRODUCTION
-      
+    if: github.ref == 'refs/heads/main'
