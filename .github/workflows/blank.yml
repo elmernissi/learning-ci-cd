@@ -53,8 +53,7 @@ jobs:
     environment:
       name: STAGING
     if: github.event_name == 'push' && github.ref == 'refs/heads/dev'
-    
-  job4-prod:
+  job3-prod:
     name: PROD DEPLOYMENT
     runs-on: ubuntu-latest
     steps:
