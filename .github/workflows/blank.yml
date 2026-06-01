@@ -52,7 +52,7 @@ jobs:
         run:  echo "[INFO] Password for ${{ vars.USER }} is ${{ secrets.PASSWORD }}."
     environment:
       name: STAGING
-    if: (github.event_name == 'push' && github.ref_name == 'dev') || (github.event_name == 'pull_request' && github.base_ref == 'main')
+    if: github.head_ref == 'dev'
 
   job3-prod:
     name: PROD DEPLOYMENT
